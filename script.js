@@ -9,9 +9,22 @@ function drawRect(x, y) {
 
 drawRect(20, 20);
 
+
+let mousedown=false
+
 canvas.addEventListener('mousemove', function(event) {
-    var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    drawRect(x, y);
+    if(mousedown){
+        var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+        drawRect(x, y);
+    }
+    console.log(mousedown)
 });
+
+canvas.addEventListener('mousedown',(event) => {
+    mousedown=true
+})
+canvas.addEventListener('mouseup',() => {
+    mousedown=false
+})
