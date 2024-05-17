@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
+    <script src="script2.js" defer></script>
 </head>
 
 
 <body>
     <div class="container">
-        <canvas id="canvas" height="600" width="1000" ></canvas>
+        <canvas id="canvas" height="600" width="500" ></canvas>
+        <canvas id="canvas2" height="600" width="500" ></canvas>
     </div>
 
 
@@ -28,10 +30,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #canvas{
-   background-color: black;
+   
+   border-left: 2px solid black;
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+}
+#canvas2{
+   
+   border-right: 2px solid black;
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
 }
 
     </style>

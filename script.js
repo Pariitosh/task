@@ -4,11 +4,15 @@ ctx.fillStyle = 'yellow';
 
 function drawRect(x, y) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(x, y, 150, 100);
+    ctx.fillRect(x-150, y, 150, 100);
+    ctx.beginPath();
+    ctx.moveTo(500,250);
+    ctx.lineTo(x, y);
+    ctx.stroke();    
 }
 
-drawRect(20, 20);
 
+drawRect(200, 200);
 
 let mousedown=false
 
@@ -24,6 +28,7 @@ canvas.addEventListener('mousemove', function(event) {
 
 canvas.addEventListener('mousedown',(event) => {
     mousedown=true
+    console.log('1s')
 })
 canvas.addEventListener('mouseup',() => {
     mousedown=false
