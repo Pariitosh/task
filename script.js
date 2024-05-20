@@ -1,6 +1,7 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
-ctx.fillStyle = 'black';
+ctx.strokeStyle = 'white';
+ctx.lineWidth=2
 let centerCircleRadius=10
 let shapes=[
 ]
@@ -24,6 +25,7 @@ function drawRect() {
     for (let i in shapes){
         if(shapes[i].shape === 'rectangle') 
             {
+                ctx.fillStyle = 'white';
                 ctx.strokeRect (shapes[i].x,shapes[i].y,shapes[i].width,shapes[i].height)
                 drawCenterCircle(shapes[i].x+shapes[i].width/2,shapes[i].y+shapes[i].height/2)
 
@@ -37,10 +39,12 @@ function drawRect() {
             }
         else if(shapes[i].shape==='circle')
             {
+                ctx.fillStyle = 'white';
             ctx.beginPath();
             ctx.arc(shapes[i].x, shapes[i].y, shapes[i].radius, 0, Math.PI * 2, false);
             ctx.stroke();
             ctx.closePath();
+            ctx.fillStyle = 'white';
             drawCenterCircle(shapes[i].x,shapes[i].y)
                 if(shapes[i].nodeExists){
                     ctx.beginPath();
@@ -62,7 +66,7 @@ function drawRect() {
 function drawCenterCircle(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2, false);
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'white';
     ctx.stroke();
     ctx.closePath();
 }
@@ -77,8 +81,8 @@ canvas.addEventListener('mousemove', function(event) {
         var y = event.clientY - rect.top;
         for (let j in shapes){
             if(shapes[j].isMoving===true && shapes[j].shape==='rectangle'){
-                shapes[j].nodeStartX=shapes[j].x+50
-                shapes[j].nodeStartY=shapes[j].y+50
+                shapes[j].nodeStartX=shapes[j].x+shapes[j].width/2
+                shapes[j].nodeStartY=shapes[j].y+shapes[j].height/2
                 shapes[j].x=x
                 shapes[j].y=y
                 drawRect()
@@ -87,11 +91,13 @@ canvas.addEventListener('mousemove', function(event) {
                 
                 shapes[j].width=shapes[j].width+2
                 shapes[j].height=shapes[j].height+2
+                shapes[j].nodeStartX=shapes[j].x+shapes[j].width/2
+                shapes[j].nodeStartY=shapes[j].y+shapes[j].height/2
                 drawRect()
             }
             if(shapes[j].isDrawingNode===true && shapes[j].shape==='rectangle'){
-                shapes[j].nodeStartX=shapes[j].x+50
-                shapes[j].nodeStartY=shapes[j].y+50
+                shapes[j].nodeStartX=shapes[j].x+shapes[j].width/2
+                shapes[j].nodeStartY=shapes[j].y+shapes[j].height/2
                 shapes[j].nodeEndX=x
                 shapes[j].nodeEndY=y
                 drawRect()
@@ -100,18 +106,20 @@ canvas.addEventListener('mousemove', function(event) {
             if(shapes[j].isMoving===true && shapes[j].shape==='circle'){
                 shapes[j].x=x
                 shapes[j].y=y
-                shapes[j].nodeStartX=shapes[j].x+5
-                shapes[j].nodeStartY=shapes[j].y+5
+                shapes[j].nodeStartX=shapes[j].x
+                shapes[j].nodeStartY=shapes[j].y
                 drawRect()
             }
              if(shapes[j].isResizing===true && shapes[j].shape==='circle'){
                 shapes[j].radius=shapes[j].radius+1
+                shapes[j].nodeStartX=shapes[j].x
+                shapes[j].nodeStartY=shapes[j].y
                 
                 drawRect()
             }
             if(shapes[j].isDrawingNode===true && shapes[j].shape==='circle'){
-                shapes[j].nodeStartX=shapes[j].x+5
-                shapes[j].nodeStartY=shapes[j].y+5
+                shapes[j].nodeStartX=shapes[j].x
+                shapes[j].nodeStartY=shapes[j].y
                 shapes[j].nodeEndX=x
                 shapes[j].nodeEndY=y
                 drawRect()

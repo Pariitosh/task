@@ -10,17 +10,23 @@
 
 
 <body>
+    <div class="container-wrapper">
     <div class="container">
         <div class="btn-wrapper">
-            <button onclick="AddRectangle()">Add Rectangle</button>
-            <button onclick="AddCircle()">Add Circle</button>
+            <h1>Shapes</h1>
+            <div>
+            <button onclick="AddRectangle()"> Rectangle</button>
+            <button onclick="AddCircle()"> Circle</button>
+        </div>
             
             
         </div>
-        <canvas id="canvas" height="600" width="1000" ></canvas>
-        
+        <div class="canvas-wrapper">
+        <h1 >Canvas</h1>
+        <canvas id="canvas" height="500" width="700" ></canvas>
     </div>
-
+    </div>
+</div>
 
 
     <style >
@@ -30,15 +36,45 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        
+        .canvas-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .canvas-wrapper h1{
+            background-color:#1f2937 ;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            border: 0px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            font-size: 4dvh;
+            color: white;
+            
+        }
+        .container-wrapper{
+            height:100dvh;
+             width: 100dvw;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+        }
 .container{
-    height:100dvh;
-    width: 100dvw;
+    height:100%;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    
 }
 .btn-wrapper{
-    height: 60dvh;
+    height: 90%;
     width: 20dvw;
     border: 2px solid black;
     border-radius: 15px;
@@ -46,23 +82,42 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
-
+    background-color: #1f2937;
 }
-.btn-wrapper button{
+.btn-wrapper div{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10%;
+    align-items: center;
+    
+}
+.btn-wrapper h1{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5dvh;
+    color: white;
+}
+.btn-wrapper div button{
     height: 15%;
-    width: 80%;
+    width: 90%;
     font-size: 3dvh;
     border-radius: 10px;
     cursor: pointer;
     background-color: white;
-    border: 2px solid gray;
+    
 
 }
 #canvas{
-   
+    background-color: #1f2937;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
    border-left: 2px solid black;
-   border-top: 2px solid black;
+   
    border-bottom: 2px solid black;
    border-right: 2px solid black;
 }
