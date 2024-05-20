@@ -11,6 +11,12 @@
 
 <body>
     <div class="container">
+        <div class="btn-wrapper">
+            <button onclick="AddRectangle()">Add Rectangle</button>
+            <button onclick="AddCircle()">Add Circle</button>
+            
+            
+        </div>
         <canvas id="canvas" height="600" width="1000" ></canvas>
         
     </div>
@@ -28,11 +34,31 @@
     height:100dvh;
     width: 100dvw;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn-wrapper{
+    height: 60dvh;
+    width: 20dvw;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     
-}
 
+}
+.btn-wrapper button{
+    height: 15%;
+    width: 80%;
+    font-size: 3dvh;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid gray;
+
+}
 #canvas{
    
    border-left: 2px solid black;
